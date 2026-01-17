@@ -329,14 +329,58 @@ class ManualBridgeGUI:
         self.file_vars = {}  # CheckVar for each file
         
         self.root = tk.Tk()
-        self.root.title(f"Manual Bridge Mode - {project_root.name}")
+        self.root.title(f"Context Bridge - {project_root.name}")
         self.root.geometry("900x650")
         self.root.minsize(700, 500)
         
-        # Configure style
+        # Dark theme colors
+        self.bg_color = '#2b2b2b'
+        self.fg_color = '#e0e0e0'
+        self.entry_bg = '#3c3c3c'
+        self.entry_fg = '#ffffff'
+        
+        # Apply dark theme to root
+        self.root.configure(bg=self.bg_color)
+        
+        # Configure style with dark theme
         self.style = ttk.Style()
-        self.style.configure('TButton', padding=6)
-        self.style.configure('Header.TLabel', font=('Segoe UI', 12, 'bold'))
+        self.style.theme_use('clam')
+        self.style.configure('TFrame', background=self.bg_color)
+        self.style.configure('TLabel', background=self.bg_color, foreground=self.fg_color)
+        self.style.configure('TLabelframe', background=self.bg_color, foreground=self.fg_color)
+        self.style.configure('TLabelframe.Label', background=self.bg_color, foreground=self.fg_color)
+        self.style.configure('TButton', background='#4a4a4a', foreground=self.fg_color, padding=6)
+        self.style.configure('TCheckbutton', background=self.bg_color, foreground=self.fg_color)
+        self.style.configure('TPanedwindow', background=self.bg_color)
+        self.style.configure('Header.TLabel', font=('Segoe UI', 12, 'bold'), background=self.bg_color, foreground='#64b5f6')
+        
+        # Configure scrollbar for dark theme
+        self.style.configure('Vertical.TScrollbar',
+                            background='#4a4a4a',
+                            darkcolor='#2b2b2b',
+                            lightcolor='#4a4a4a',
+                            troughcolor='#2b2b2b',
+                            bordercolor='#2b2b2b',
+                            arrowcolor='#e0e0e0')
+        self.style.map('Vertical.TScrollbar',
+                      background=[('active', '#5a5a5a'), ('!active', '#4a4a4a')])
+        
+        # Apply dark title bar on Windows 10/11
+        self.root.update_idletasks()  # Ensure window is created
+        try:
+            import ctypes
+            # Get window handle
+            hwnd = ctypes.windll.user32.FindWindowW(None, self.root.title())
+            if hwnd:
+                # Windows 11 dark mode
+                DWMWA_USE_IMMERSIVE_DARK_MODE = 20
+                value = ctypes.c_int(2)  # 2 = force dark mode
+                ctypes.windll.dwmapi.DwmSetWindowAttribute(
+                    hwnd, DWMWA_USE_IMMERSIVE_DARK_MODE,
+                    ctypes.byref(value), ctypes.sizeof(value)
+                )
+        except:
+            pass  # Silently fail on non-Windows or older Windows
         
         self._create_widgets()
         self._load_files()
@@ -359,10 +403,20 @@ class ManualBridgeGUI:
         ttk.Label(left_frame, text="📤 Request / 往路", style='Header.TLabel').pack(anchor=tk.W)
         ttk.Separator(left_frame, orient=tk.HORIZONTAL).pack(fill=tk.X, pady=5)
         
-        # Instruction input
+        # Instruction input with custom scrollbar
         ttk.Label(left_frame, text="Instruction / 指示:").pack(anchor=tk.W)
-        self.instruction_text = scrolledtext.ScrolledText(left_frame, height=4, wrap=tk.WORD)
-        self.instruction_text.pack(fill=tk.X, pady=(0, 10))
+        
+        instr_frame = ttk.Frame(left_frame)
+        instr_frame.pack(fill=tk.X, pady=(0, 10))
+        
+        self.instruction_text = tk.Text(instr_frame, height=4, wrap=tk.WORD,
+                                         bg=self.entry_bg, fg=self.entry_fg,
+                                         insertbackground=self.entry_fg, borderwidth=1, relief=tk.SUNKEN)
+        instr_scrollbar = ttk.Scrollbar(instr_frame, orient=tk.VERTICAL, command=self.instruction_text.yview)
+        self.instruction_text.configure(yscrollcommand=instr_scrollbar.set)
+        
+        instr_scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
+        self.instruction_text.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
         self.instruction_text.insert(tk.END, "Enter your instructions / 以下の変更を行ってください：\n")
         
         # Context options
@@ -385,7 +439,8 @@ class ManualBridgeGUI:
         file_list_frame.pack(fill=tk.BOTH, expand=True, pady=5)
         
         # Canvas for scrollable file list with checkboxes
-        self.file_canvas = tk.Canvas(file_list_frame, borderwidth=1, relief=tk.SUNKEN)
+        self.file_canvas = tk.Canvas(file_list_frame, borderwidth=1, relief=tk.SUNKEN,
+                                      bg=self.entry_bg, highlightthickness=0)
         file_scrollbar = ttk.Scrollbar(file_list_frame, orient=tk.VERTICAL, command=self.file_canvas.yview)
         self.file_inner_frame = ttk.Frame(self.file_canvas)
         
@@ -422,16 +477,25 @@ class ManualBridgeGUI:
         ttk.Label(right_frame, text="📥 Response / 復路", style='Header.TLabel').pack(anchor=tk.W)
         ttk.Separator(right_frame, orient=tk.HORIZONTAL).pack(fill=tk.X, pady=5)
         
-        # Log area
+        # Log area with custom scrollbar
         ttk.Label(right_frame, text="Log / ログ:").pack(anchor=tk.W)
-        self.log_text = scrolledtext.ScrolledText(right_frame, wrap=tk.WORD, state=tk.DISABLED)
-        self.log_text.pack(fill=tk.BOTH, expand=True, pady=5)
         
-        # Configure log text tags
-        self.log_text.tag_configure('success', foreground='green')
-        self.log_text.tag_configure('error', foreground='red')
-        self.log_text.tag_configure('info', foreground='blue')
-        self.log_text.tag_configure('warning', foreground='orange')
+        log_frame = ttk.Frame(right_frame)
+        log_frame.pack(fill=tk.BOTH, expand=True, pady=5)
+        
+        self.log_text = tk.Text(log_frame, wrap=tk.WORD, state=tk.DISABLED,
+                                 bg=self.entry_bg, fg=self.entry_fg, borderwidth=1, relief=tk.SUNKEN)
+        log_scrollbar = ttk.Scrollbar(log_frame, orient=tk.VERTICAL, command=self.log_text.yview)
+        self.log_text.configure(yscrollcommand=log_scrollbar.set)
+        
+        log_scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
+        self.log_text.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
+        
+        # Configure log text tags with better colors for dark mode
+        self.log_text.tag_configure('success', foreground='#4caf50')  # Brighter green
+        self.log_text.tag_configure('error', foreground='#f44336')    # Brighter red
+        self.log_text.tag_configure('info', foreground='#64b5f6')     # Light blue
+        self.log_text.tag_configure('warning', foreground='#ff9800')  # Orange
         
         # Apply button
         self.apply_btn = ttk.Button(
