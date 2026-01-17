@@ -10,10 +10,17 @@ External Web AI (Google AI Studio, ChatGPT, etc.) as an inference engine without
 ## 🎯 Features
 
 - **Zero API Consumption**: Clipboard-based interaction means no API keys or token usage
-- **Large Context Support**: Up to 1 million tokens with Gemini 1.5 Pro
+- **Large Context Support**: Up to 1 million tokens with Gemini 2.0 Flash
 - **Safe Operation**: Dedicated GUI prevents accidental paste into terminal
 - **Auto Patch Application**: Automatically detects and applies changes from AI responses
 - **Standard Library Only**: No additional installations required (uses Python's built-in `tkinter`)
+- **Dark Theme**: Modern dark UI for reduced eye strain
+
+## 📸 Screenshot
+
+![Context Bridge GUI](docs/gui_screenshot.png)
+
+*Dark theme GUI with bilingual support (English/Japanese)*
 
 ## 📦 Installation
 
