@@ -356,30 +356,30 @@ class ManualBridgeGUI:
         paned.add(left_frame, weight=1)
         
         # Header
-        ttk.Label(left_frame, text="📤 Request (往路)", style='Header.TLabel').pack(anchor=tk.W)
+        ttk.Label(left_frame, text="📤 Request / 往路", style='Header.TLabel').pack(anchor=tk.W)
         ttk.Separator(left_frame, orient=tk.HORIZONTAL).pack(fill=tk.X, pady=5)
         
         # Instruction input
-        ttk.Label(left_frame, text="指示:").pack(anchor=tk.W)
+        ttk.Label(left_frame, text="Instruction / 指示:").pack(anchor=tk.W)
         self.instruction_text = scrolledtext.ScrolledText(left_frame, height=4, wrap=tk.WORD)
         self.instruction_text.pack(fill=tk.X, pady=(0, 10))
-        self.instruction_text.insert(tk.END, "以下の変更を行ってください：\n")
+        self.instruction_text.insert(tk.END, "Enter your instructions / 以下の変更を行ってください：\n")
         
         # Context options
-        context_frame = ttk.LabelFrame(left_frame, text="コンテキストオプション", padding="5")
+        context_frame = ttk.LabelFrame(left_frame, text="Context Options / コンテキストオプション", padding="5")
         context_frame.pack(fill=tk.X, pady=5)
         
         self.send_all_var = tk.BooleanVar(value=True)
         self.send_all_check = ttk.Checkbutton(
             context_frame, 
-            text="すべてのファイルを送信",
+            text="Send ALL Files / すべてのファイルを送信",
             variable=self.send_all_var,
             command=self._on_send_all_toggle
         )
         self.send_all_check.pack(anchor=tk.W)
         
         # File list
-        ttk.Label(left_frame, text="送信ファイル:").pack(anchor=tk.W, pady=(10, 0))
+        ttk.Label(left_frame, text="Files to Send / 送信ファイル:").pack(anchor=tk.W, pady=(10, 0))
         
         file_list_frame = ttk.Frame(left_frame)
         file_list_frame.pack(fill=tk.BOTH, expand=True, pady=5)
@@ -403,13 +403,13 @@ class ManualBridgeGUI:
         self.file_canvas.bind_all("<MouseWheel>", self._on_mousewheel)
         
         # Stats label
-        self.stats_label = ttk.Label(left_frame, text="ファイル数: 0 | サイズ: 0 KB")
+        self.stats_label = ttk.Label(left_frame, text="Files: 0 | Size: 0 KB")
         self.stats_label.pack(anchor=tk.W)
         
         # Copy button
         self.copy_btn = ttk.Button(
             left_frame, 
-            text="📋 プロンプトをコピー",
+            text="📋 Copy Prompt / プロンプトをコピー",
             command=self._copy_to_clipboard
         )
         self.copy_btn.pack(fill=tk.X, pady=10)
@@ -419,11 +419,11 @@ class ManualBridgeGUI:
         paned.add(right_frame, weight=1)
         
         # Header
-        ttk.Label(right_frame, text="📥 Response (復路)", style='Header.TLabel').pack(anchor=tk.W)
+        ttk.Label(right_frame, text="📥 Response / 復路", style='Header.TLabel').pack(anchor=tk.W)
         ttk.Separator(right_frame, orient=tk.HORIZONTAL).pack(fill=tk.X, pady=5)
         
         # Log area
-        ttk.Label(right_frame, text="ログ / 結果:").pack(anchor=tk.W)
+        ttk.Label(right_frame, text="Log / ログ:").pack(anchor=tk.W)
         self.log_text = scrolledtext.ScrolledText(right_frame, wrap=tk.WORD, state=tk.DISABLED)
         self.log_text.pack(fill=tk.BOTH, expand=True, pady=5)
         
@@ -436,7 +436,7 @@ class ManualBridgeGUI:
         # Apply button
         self.apply_btn = ttk.Button(
             right_frame,
-            text="🔨 パッチを適用",
+            text="🔨 Apply Patch / パッチを適用",
             command=self._apply_from_clipboard
         )
         self.apply_btn.pack(fill=tk.X, pady=10)
@@ -444,7 +444,7 @@ class ManualBridgeGUI:
         # Refresh button
         self.refresh_btn = ttk.Button(
             right_frame,
-            text="🔄 ファイルリスト更新",
+            text="🔄 Refresh / ファイルリスト更新",
             command=self._load_files
         )
         self.refresh_btn.pack(fill=tk.X)
@@ -463,7 +463,7 @@ class ManualBridgeGUI:
     
     def _load_files(self):
         """Load and display files from project."""
-        self.log("ファイルをスキャン中...", 'info')
+        self.log("Scanning files... / ファイルをスキャン中...", 'info')
         
         # Clear existing checkboxes
         for widget in self.file_inner_frame.winfo_children():
@@ -490,7 +490,7 @@ class ManualBridgeGUI:
             cb.pack(anchor=tk.W)
         
         self._update_stats()
-        self.log(f"{len(self.files)}個のテキストファイルを発見", 'success')
+        self.log(f"Found {len(self.files)} text files / {len(self.files)}個のテキストファイルを発見", 'success')
     
     def _on_send_all_toggle(self):
         """Handle 'Send ALL Files' checkbox toggle."""
@@ -505,7 +505,7 @@ class ManualBridgeGUI:
         total_size = sum(f.stat().st_size for f in selected_files if f.exists())
         
         self.stats_label.config(
-            text=f"ファイル数: {len(selected_files)}/{len(self.files)} | サイズ: {total_size / 1024:.1f} KB"
+            text=f"Files: {len(selected_files)}/{len(self.files)} | Size: {total_size / 1024:.1f} KB"
         )
     
     def _copy_to_clipboard(self):
