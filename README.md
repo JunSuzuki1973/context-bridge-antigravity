@@ -149,11 +149,13 @@ Example instructions:
 
 ## 📖 Recommended Web AI
 
-| AI | Context Length | Recommendation | URL |
-|----|---------------|----------------|-----|
-| **Google AI Studio (Gemini 1.5 Pro)** | 1M tokens | ⭐⭐⭐ | https://aistudio.google.com/ |
-| ChatGPT (GPT-4) | 128K tokens | ⭐⭐ | https://chat.openai.com/ |
-| Claude.ai | 200K tokens | ⭐⭐ | https://claude.ai/ |
+| AI | Latest Model | Context Length | Recommendation | URL |
+|----|-------------|----------------|----------------|-----|
+| **Google AI Studio** | Gemini 2.0 Flash | 1M tokens | ⭐⭐⭐ | https://aistudio.google.com/ |
+| **ChatGPT** | GPT-4o / o1 | 128K tokens | ⭐⭐ | https://chat.openai.com/ |
+| **Claude** | Claude 3.5 Sonnet | 200K tokens | ⭐⭐ | https://claude.ai/ |
+
+> **Note**: Gemini 2.0 Flash combines large context and high speed, ideal for sending entire projects.
 
 ## 🔧 Troubleshooting
 

@@ -149,11 +149,13 @@ python tools/bridge_gui.py --cwd demo
 
 ## 📖 推奨Web AI
 
-| AI | コンテキスト長 | 推奨度 | URL |
-|----|--------------|--------|-----|
-| **Google AI Studio (Gemini 1.5 Pro)** | 100万トークン | ⭐⭐⭐ | https://aistudio.google.com/ |
-| ChatGPT (GPT-4) | 128Kトークン | ⭐⭐ | https://chat.openai.com/ |
-| Claude.ai | 200Kトークン | ⭐⭐ | https://claude.ai/ |
+| AI | 最新モデル | コンテキスト長 | 推奨度 | URL |
+|----|----------|--------------|--------|-----|
+| **Google AI Studio** | Gemini 2.0 Flash | 100万トークン | ⭐⭐⭐ | https://aistudio.google.com/ |
+| **ChatGPT** | GPT-4o / o1 | 128Kトークン | ⭐⭐ | https://chat.openai.com/ |
+| **Claude** | Claude 3.5 Sonnet | 200Kトークン | ⭐⭐ | https://claude.ai/ |
+
+> **Note**: Gemini 2.0 Flash は大規模コンテキストと高速性を兼ね備え、プロジェクト全体の送信に最適です。
 
 ## 🔧 トラブルシューティング
 
