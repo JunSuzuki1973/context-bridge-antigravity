@@ -12,7 +12,7 @@
 
 ## 📝 About This Project
 
-**Manual Bridge Mode** is developed as part of the Antigravity ecosystem to provide developers with a cost-effective way to leverage powerful AI models for code generation and editing.
+**Context Bridge for Antigravity** is developed as part of the Antigravity ecosystem to provide developers with a cost-effective way to leverage powerful AI models for code generation and editing.
 
 ### Project Timeline
 
@@ -36,7 +36,7 @@ To democratize access to advanced AI-assisted coding by removing API cost barrie
 
 ### プロジェクトについて
 
-**Manual Bridge Mode** は、開発者がコード生成・編集のために強力なAIモデルを費用対効果の高い方法で活用できるよう、Antigravityエコシステムの一部として開発されています。
+**Context Bridge for Antigravity** は、開発者がコード生成・編集のために強力なAIモデルを費用対効果の高い方法で活用できるよう、Antigravityエコシステムの一部として開発されています。
 
 ### プロジェクトタイムライン
 

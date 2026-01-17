@@ -1,6 +1,6 @@
-# Manual Bridge Mode - 企画書
+# Context Bridge for Antigravity - 企画書
 
-**プロジェクト名**: Manual Bridge Mode (Context Bridge)  
+**プロジェクト名**: Context Bridge for Antigravity  
 **バージョン**: 1.0.0  
 **作成日**: 2026-01-17  
 **ステータス**: ✅ 実装完了

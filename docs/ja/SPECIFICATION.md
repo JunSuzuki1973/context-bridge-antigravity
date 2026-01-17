@@ -1,4 +1,4 @@
-# Manual Bridge Mode - 技術仕様書
+# Context Bridge for Antigravity - 技術仕様書
 
 **バージョン**: 1.0.0  
 **最終更新**: 2026-01-17  

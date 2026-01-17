@@ -1,6 +1,6 @@
-# Manual Bridge Mode - Planning Document
+# Context Bridge for Antigravity - Planning Document
 
-**Project Name**: Manual Bridge Mode (Context Bridge)  
+**Project Name**: Context Bridge for Antigravity  
 **Version**: 1.0.0  
 **Created**: 2026-01-17  
 **Status**: ✅ Implementation Complete

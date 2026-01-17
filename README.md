@@ -1,4 +1,4 @@
-# Manual Bridge Mode for Antigravity
+# Context Bridge for Antigravity
 
 **[日本語版 README はこちら](README.ja.md)** | **[Japanese README is here](README.ja.md)**
 
