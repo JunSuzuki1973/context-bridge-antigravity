@@ -1,219 +1,81 @@
-# Context Bridge for Antigravity
+# Context Bridge for Antigravity - Development Repository
 
-**[日本語版 README はこちら](README.ja.md)** | **[Japanese README is here](README.ja.md)**
+This is the **development repository** for Context Bridge, an Antigravity skill.
 
-External Web AI (Google AI Studio, ChatGPT, etc.) as an inference engine without API keys using a "Human Relay" approach.
-
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Python 3.7+](https://img.shields.io/badge/python-3.7+-blue.svg)](https://www.python.org/downloads/)
-
-## 🎯 Features
-
-- **Zero API Consumption**: Clipboard-based interaction means no API keys or token usage
-- **Large Context Support**: Up to 1 million tokens with Gemini 2.0 Flash
-- **Safe Operation**: Dedicated GUI prevents accidental paste into terminal
-- **Auto Patch Application**: Automatically detects and applies changes from AI responses
-- **Standard Library Only**: No additional installations required (uses Python's built-in `tkinter`)
-- **Dark Theme**: Modern dark UI for reduced eye strain
-
-## 📸 Screenshot
-
-![Context Bridge GUI](docs/gui_screenshot.png)
-
-*Dark theme GUI with bilingual support (English/Japanese)*
-
-## 📦 Installation
-
-### Prerequisites
-
-- Python 3.7 or higher
-- Antigravity (Google Deepmind AI Agent)
-
-### Setup Instructions
-
-#### Method 1: Automatic Installation (Recommended) ⚡
-
-1. Download and extract the ZIP from [GitHub Releases](https://github.com/JunSuzuki1973/context-bridge-antigravity/releases)
-2. Tell Antigravity:
-   ```
-   Please install the context-bridge skill to ~/.agent/skills/
-   ```
-
-Antigravity will automatically copy the folder to the correct location.
-
-#### Method 2: Manual Installation
-
-1. **Download and Extract**
-   
-   Download `Source code (zip)` from [Releases](https://github.com/JunSuzuki1973/context-bridge-antigravity/releases)
-
-2. **Copy the skill folder**
-   
-   ```bash
-   # Windows
-   xcopy /E /I context-bridge "%USERPROFILE%\.agent\skills\context-bridge"
-   
-   # macOS/Linux
-   cp -r context-bridge ~/.agent/skills/context-bridge
-   ```
-
-3. **Verify structure**
-   
-   Your skills folder should look like:
-   
-   ```
-   ~/.agent/skills/context-bridge/
-   ├── SKILL.md                   # Skill definition (required)
-   ├── tools/
-   │   └── bridge_gui.py          # Main GUI application
-   ├── workflows/
-   │   └── open-airlock.md        # /open-airlock command
-   ├── docs/
-   │   ├── gui_screenshot.png
-   │   ├── en/                    # English documentation
-   │   └── ja/                    # Japanese documentation
-   ├── README.md
-   ├── README.ja.md
-   └── LICENSE
-   ```
-
-4. **Restart Antigravity**
-   
-   The skill will be automatically recognized on restart.
-   ```
-   reload skills
-   ```
-
-## 🚀 Usage
-
-### 1. Launch GUI
-
-In Antigravity chat, enter:
+## 📂 Repository Structure
 
 ```
-/open-airlock
+ContextBridge/                      ← Development project root
+├── .agent/                         ← Development workflows (not distributed)
+│   └── workflows/
+│       └── open-airlock.md        ← For testing during development
+│
+├── context-bridge/                 ← ★ THE SKILL (distribute this folder)
+│   ├── SKILL.md                    ← Skill definition (required)
+│   ├── workflows/                  ← User-facing workflows
+│   │   └── open-airlock.md         ← /open-airlock command
+│   ├── tools/
+│   │   └── bridge_gui.py           ← Main GUI application
+│   ├── docs/
+│   │   ├── gui_screenshot.png
+│   │   ├── en/                     ← English documentation
+│   │   └── ja/                     ← Japanese documentation
+│   ├── README.md                   ← English README
+│   ├── README.ja.md                ← Japanese README
+│   └── LICENSE                     ← MIT License
+│
+├── demo/                           ← Demo project (block breaker game)
+│   ├── index.html
+│   ├── style.css
+│   └── game.js
+│
+└── GITHUB_UPLOAD.md                ← Development notes
 ```
 
-Or use natural language:
-```
-Launch Context Bridge
-```
+## 🎯 For Users
 
-### 2. Outbound (Project → Web AI)
+**Download the skill**: [GitHub Releases](https://github.com/JunSuzuki1973/context-bridge-antigravity/releases)
 
-1. **Enter instruction**: Type your task in the "Instruction" field
-   ```
-   Double the ball speed and randomize block colors
-   ```
+**Installation**:
+1. Download and extract ZIP
+2. Copy `context-bridge/` folder to `~/.agent/skills/`
+3. Restart Antigravity
 
-2. **Select files**: All files are selected by default (adjust as needed)
+**Documentation**: See [context-bridge/README.md](context-bridge/README.md)
 
-3. **Copy**: Click "📋 Copy Prompt to Clipboard" button
+## 👨‍💻 For Developers
 
-4. **Paste to Web AI**: 
-   - Open [Google AI Studio](https://aistudio.google.com/)
-   - Paste with Ctrl+V and send
+### Development Setup
 
-### 3. Inbound (Web AI → Project)
+1. Clone this repository
+2. The `context-bridge/` folder is the actual skill
+3. Test changes by copying to `~/.agent/skills/`
 
-1. **Copy AI response**: Ctrl+A → Ctrl+C
+### Project Layout
 
-2. **Apply**: Return to GUI and click "🔨 Apply Patch" button
+- **`context-bridge/`** - The distributable skill package
+- **`.agent/`** - Development-only workflows
+- **`demo/`** - Test project for the GUI
 
-3. **Verify**: Check the log area for results
+### Making Changes
 
-## 🎨 Demo Project
+1. Edit files in `context-bridge/`
+2. Test by installing to `~/.agent/skills/`
+3. Commit and push changes
+4. Create new release when ready
 
-A simple block breaker game is included in the `demo/` folder.
+### Creating a Release
 
-**Test method**:
-```bash
-python tools/bridge_gui.py --cwd demo
-```
-
-Example instructions:
-- "Double the ball speed"
-- "Make the paddle larger"
-- "Add gradient colors to blocks"
-
-## 📖 Recommended Web AI
-
-| AI | Latest Model | Context Length | Recommendation | URL |
-|----|-------------|----------------|----------------|-----|
-| **Google AI Studio** | Gemini 2.0 Flash | 1M tokens | ⭐⭐⭐ | https://aistudio.google.com/ |
-| **ChatGPT** | GPT-4o / o1 | 128K tokens | ⭐⭐ | https://chat.openai.com/ |
-| **Claude** | Claude 3.5 Sonnet | 200K tokens | ⭐⭐ | https://claude.ai/ |
-
-> **Note**: Gemini 2.0 Flash combines large context and high speed, ideal for sending entire projects.
-
-## 🔧 Troubleshooting
-
-### Patches Not Applying
-
-**Cause**: AI output format is incorrect
-
-**Solution**: 
-- Verify `<<<< SEARCH ... ==== ... >>>>` blocks exist in AI response
-- Ensure system prompt was correctly transmitted (usually auto-inserted)
-
-### File Not Found
-
-**Cause**: Incorrect path specification
-
-**Solution**:
-- Verify paths use `/` separators
-- Check paths are relative to project root
-
-### Character Encoding Issues
-
-**Cause**: Encoding problems
-
-**Solution**:
-- Save files as UTF-8
-- Add `# -*- coding: utf-8 -*-` at top of files with non-ASCII characters
-
-### GUI Won't Start
-
-**Cause**: tkinter not installed
-
-**Solution**:
-```bash
-# Ubuntu/Debian
-sudo apt-get install python3-tk
-
-# macOS (with Homebrew)
-brew install python-tk
-
-# Windows
-# Usually pre-installed. Reinstall Python if needed
-```
-
-## 🤝 Contributing
-
-Bug reports and feature requests are welcome:
-- Issues: Project GitHub repository
-- Pull Requests: Always welcome!
+1. Update version in `context-bridge/SKILL.md`
+2. Commit changes
+3. Create GitHub release with tag (e.g., `v1.1.0`)
+4. GitHub automatically packages `context-bridge/` in the ZIP
 
 ## 📄 License
 
-MIT License - See [LICENSE](LICENSE) file for details.
+MIT License - See [context-bridge/LICENSE](context-bridge/LICENSE)
 
-## 🔗 Related Links
+## 🔗 Links
 
-- [Antigravity](https://deepmind.google/technologies/gemini/antigravity/)
-- [Google AI Studio](https://aistudio.google.com/)
-- [Technical Specification](docs/en/SPECIFICATION.md)
-- [Planning Document](docs/en/PLANNING.md)
-
-## 📞 Support
-
-If you have questions or issues:
-1. First check [Troubleshooting](#-troubleshooting)
-2. Review [Technical Specification](docs/en/SPECIFICATION.md) for details
-3. If still unresolved, create an Issue
-
----
-
-**Developer**: [JUN SUZUKI](https://junsuzuki-ai-agency.xyz/)  
-**Version**: 1.0.0  
-**Last Updated**: 2026-01-17
+- **GitHub Repository**: https://github.com/JunSuzuki1973/context-bridge-antigravity
+- **Developer**: [JUN SUZUKI](https://junsuzuki-ai-agency.xyz/)
