@@ -10,7 +10,7 @@ External Web AI (Google AI Studio, ChatGPT, etc.) as an inference engine without
 ## 🎯 Features
 
 - **Zero API Consumption**: Clipboard-based interaction means no API keys or token usage
-- **Large Context Support**: Up to 1 million tokens with Gemini 2.0 Flash
+- **Large Context Support**: Up to 1 million tokens with Gemini 3.0 Pro
 - **Safe Operation**: Dedicated GUI prevents accidental paste into terminal
 - **Auto Patch Application**: Automatically detects and applies changes from AI responses
 - **Standard Library Only**: No additional installations required (uses Python's built-in `tkinter`)
@@ -158,11 +158,10 @@ Example instructions:
 
 | AI | Latest Model | Context Length | Recommendation | URL |
 |----|-------------|----------------|----------------|-----|
-| **Google AI Studio** | Gemini 2.0 Flash | 1M tokens | ⭐⭐⭐ | https://aistudio.google.com/ |
-| **ChatGPT** | GPT-4o / o1 | 128K tokens | ⭐⭐ | https://chat.openai.com/ |
-| **Claude** | Claude 3.5 Sonnet | 200K tokens | ⭐⭐ | https://claude.ai/ |
+| **Google AI Studio** | Gemini 3.0 Pro | 1M tokens | ⭐⭐⭐ | https://aistudio.google.com/ |
+| **Claude** | Sonnet 4.5 | 200K tokens | ⭐⭐ | https://claude.ai/ |
 
-> **Note**: Gemini 2.0 Flash combines large context and high speed, ideal for sending entire projects.
+> **Note**: Gemini 3.0 Pro combines large context and high speed, ideal for sending entire projects.
 
 ## 🔧 Troubleshooting
 

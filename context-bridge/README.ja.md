@@ -10,7 +10,7 @@
 ## 🎯 特徴
 
 - **API消費ゼロ**: クリップボード経由でのやり取りのため、APIキーやトークン消費なし
-- **大規模コンテキスト対応**: Gemini 2.0 Flashなら100万トークンまで送信可能
+- **大規模コンテキスト対応**: Gemini 3.0 Proなら100万トークンまで送信可能
 - **安全な操作**: 専用GUIでターミナルへの誤ペースト事故を防止
 - **自動パッチ適用**: AIの応答から変更箇所を自動検出して適用
 - **標準ライブラリのみ**: 追加インストール不要（Python標準の`tkinter`を使用）
@@ -156,12 +156,11 @@ python tools/bridge_gui.py --cwd demo
 ## 📖 推奨Web AI
 
 | AI | 最新モデル | コンテキスト長 | 推奨度 | URL |
-|----|----------|--------------|--------|-----|
-| **Google AI Studio** | Gemini 2.0 Flash | 100万トークン | ⭐⭐⭐ | https://aistudio.google.com/ |
-| **ChatGPT** | GPT-4o / o1 | 128Kトークン | ⭐⭐ | https://chat.openai.com/ |
-| **Claude** | Claude 3.5 Sonnet | 200Kトークン | ⭐⭐ | https://claude.ai/ |
+|----|------------|---------------|--------|-----|
+| **Google AI Studio** | Gemini 3.0 Pro | 100万トークン | ⭐⭐⭐ | https://aistudio.google.com/ |
+| **Claude** | Sonnet 4.5 | 200Kトークン | ⭐⭐ | https://claude.ai/ |
 
-> **Note**: Gemini 2.0 Flash は大規模コンテキストと高速性を兼ね備え、プロジェクト全体の送信に最適です。
+> **Note**: Gemini 3.0 Pro は大規模コンテキストと高速性を兼ね備え、プロジェクト全体の送信に最適です。
 
 ## 🔧 トラブルシューティング
 

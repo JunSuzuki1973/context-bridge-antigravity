@@ -39,6 +39,5 @@ python tools/bridge_gui.py
 - "APIキーを使わずにAIに依頼したい"
 
 ## 推奨AI
-- **Google AI Studio (Gemini 2.0 Flash)**: 100万トークン対応（大規模プロジェクト向け）
-- **ChatGPT (GPT-4o / o1)**: 128Kトークン（中規模プロジェクト向け）
-- **Claude.ai**: 200Kトークン（中規模プロジェクト向け）
+- **Google AI Studio (Gemini 3.0 Pro)**: 100万トークン対応（大規模プロジェクト向け）
+- **Claude (Sonnet 4.5)**: 200Kトークン（中規模プロジェクト向け）
