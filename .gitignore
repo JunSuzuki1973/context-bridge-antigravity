@@ -50,5 +50,5 @@ desktop.ini
 .coverage
 htmlcov/
 
-# Demo can be kept - it's useful for testing
-# demo/
+# Development files (not included in skill distribution)
+GITHUB_UPLOAD.md

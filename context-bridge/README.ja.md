@@ -30,55 +30,77 @@
 
 ### セットアップ手順
 
-#### 方法1: 自動インストール（推奨）⚡
+#### 方法1: Antigravityに自動インストールさせる（推奨）⚡
 
-1. [GitHubリリース](https://github.com/JunSuzuki1973/context-bridge-antigravity/releases)からZIPをダウンロード・展開
-2. Antigravityに指示:
-   ```
-   context-bridgeスキルを~/.agent/skills/にインストールして
-   ```
+Antigravityのチャットで以下のように指示するだけで、自動的にインストールされます：
 
-Antigravityが自動的に正しい場所にコピーします。
+```
+このスキル（Manual Bridge Mode）を適切な場所に配置してください。
+```
 
-#### 方法2: 手動インストール
+または：
 
-1. **ダウンロードと展開**
-   
-   [Releases](https://github.com/JunSuzuki1973/context-bridge-antigravity/releases)から`Source code (zip)`をダウンロード
+```
+ContextBridgeフォルダをスキルディレクトリにインストールして
+```
 
-2. **スキルフォルダをコピー**
+Antigravityが自動的に：
+1. このREADMEを読んで理解
+2. 適切なディレクトリ構造を作成
+3. 必要なファイルをコピー
+4. スキルを認識
+
+#### 方法2: 手動でインストール
+
+1. **スキルフォルダをコピー**
+
+   Antigravityのスキルディレクトリにこのフォルダをコピーします：
    
    ```bash
    # Windowsの場合
-   xcopy /E /I context-bridge "%USERPROFILE%\.agent\skills\context-bridge"
+   xcopy /E /I ContextBridge "%USERPROFILE%\.agent\skills\manual_bridge"
    
    # macOS/Linuxの場合
-   cp -r context-bridge ~/.agent/skills/context-bridge
+   cp -r ContextBridge ~/.agent/skills/manual_bridge
    ```
 
-3. **構成の確認**
-   
-   スキルフォルダは以下のようになります：
+2. **ファイル構成の確認**
+
+   以下のファイルが配置されていることを確認：
    
    ```
-   ~/.agent/skills/context-bridge/
-   ├── SKILL.md                   # スキル定義（必須）
+   ~/.agent/skills/manual_bridge/
    ├── tools/
    │   └── bridge_gui.py          # メインGUIアプリケーション
-   ├── workflows/
-   │   └── open-airlock.md        # /open-airlockコマンド
+   ├── skills/
+   │   └── manual_bridge.md       # スキル定義ファイル
+   ├── .agent/
+   │   └── workflows/
+   │       └── open-airlock.md    # Antigravity用ワークフロー
    ├── docs/
-   │   ├── gui_screenshot.png
    │   ├── en/                    # 英語ドキュメント
+   │   │   ├── README.md
+   │   │   ├── PLANNING.md
+   │   │   └── SPECIFICATION.md
    │   └── ja/                    # 日本語ドキュメント
-   ├── README.md
-   ├── README.ja.md
-   └── LICENSE
+   │       ├── README.md
+   │       ├── PLANNING.md
+   │       └── SPECIFICATION.md
+   ├── demo/                      # デモプロジェクト（削除可）
+   │   ├── index.html
+   │   ├── style.css
+   │   └── game.js
+   └── LICENSE                    # ライセンス情報
    ```
 
-4. **Antigravityを再起動**
+3. **Antigravityで認識させる**
+
+   Antigravityを再起動するか、以下のコマンドを実行：
    
-   再起動すると自動的にスキルが認識されます。
+   ```
+   スキルをリロード
+   ```
+
 ## 🚀 使い方
 
 ### 1. GUI起動

@@ -31,55 +31,73 @@ External Web AI (Google AI Studio, ChatGPT, etc.) as an inference engine without
 
 ### Setup Instructions
 
-#### Method 1: Automatic Installation (Recommended) ⚡
+#### Method 1: Let Antigravity Install Automatically (Recommended) ⚡
 
-1. Download and extract the ZIP from [GitHub Releases](https://github.com/JunSuzuki1973/context-bridge-antigravity/releases)
-2. Tell Antigravity:
-   ```
-   Please install the context-bridge skill to ~/.agent/skills/
-   ```
+Simply instruct Antigravity in chat, and it will install automatically:
 
-Antigravity will automatically copy the folder to the correct location.
+```
+Please install this skill (Manual Bridge Mode) to the appropriate location.
+```
+
+Or:
+
+```
+Install the ContextBridge folder to the skills directory
+```
+
+Antigravity will automatically:
+1. Read and understand this README
+2. Create the appropriate directory structure
+3. Copy necessary files
+4. Recognize the skill
 
 #### Method 2: Manual Installation
 
-1. **Download and Extract**
-   
-   Download `Source code (zip)` from [Releases](https://github.com/JunSuzuki1973/context-bridge-antigravity/releases)
+1. **Copy the skill folder**
 
-2. **Copy the skill folder**
+   Copy this folder to your Antigravity skills directory:
    
    ```bash
    # Windows
-   xcopy /E /I context-bridge "%USERPROFILE%\.agent\skills\context-bridge"
+   xcopy /E /I ContextBridge "%USERPROFILE%\.agent\skills\manual_bridge"
    
    # macOS/Linux
-   cp -r context-bridge ~/.agent/skills/context-bridge
+   cp -r ContextBridge ~/.agent/skills/manual_bridge
    ```
 
-3. **Verify structure**
-   
-   Your skills folder should look like:
+2. **Verify file structure**
+
+   Ensure the following files are in place:
    
    ```
-   ~/.agent/skills/context-bridge/
-   ├── SKILL.md                   # Skill definition (required)
+   ~/.agent/skills/manual_bridge/
    ├── tools/
    │   └── bridge_gui.py          # Main GUI application
-   ├── workflows/
-   │   └── open-airlock.md        # /open-airlock command
+   ├── skills/
+   │   └── manual_bridge.md       # Skill definition file
+   ├── .agent/
+   │   └── workflows/
+   │       └── open-airlock.md    # Antigravity workflow
    ├── docs/
-   │   ├── gui_screenshot.png
    │   ├── en/                    # English documentation
+   │   │   ├── README.md
+   │   │   ├── PLANNING.md
+   │   │   └── SPECIFICATION.md
    │   └── ja/                    # Japanese documentation
-   ├── README.md
-   ├── README.ja.md
-   └── LICENSE
+   │       ├── README.md
+   │       ├── PLANNING.md
+   │       └── SPECIFICATION.md
+   ├── demo/                      # Demo project (can be deleted)
+   │   ├── index.html
+   │   ├── style.css
+   │   └── game.js
+   └── LICENSE                    # License information
    ```
 
-4. **Restart Antigravity**
+3. **Activate in Antigravity**
+
+   Restart Antigravity or run:
    
-   The skill will be automatically recognized on restart.
    ```
    reload skills
    ```
