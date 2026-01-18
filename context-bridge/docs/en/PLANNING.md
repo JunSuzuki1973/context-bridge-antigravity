@@ -14,7 +14,7 @@ Manual Bridge Mode is a "Human Relay" feature that enables the use of external w
 ### Key Value Propositions
 
 1. **Zero Cost**: No API consumption, leverages free web chatbots
-2. **Large-Scale Support**: Up to 1 million tokens context with Gemini 1.5 Pro
+2. **Large-Scale Support**: Up to 1 million tokens context with Gemini 2.0 Flash
 3. **Safety**: Dedicated GUI prevents terminal misoperations
 4. **Simplicity**: Works with standard library only, no additional installation required
 
@@ -61,7 +61,7 @@ This hybrid approach:
 
 ### Target AI
 
-**Google AI Studio (Gemini 1.5 Pro)** as primary recommendation:
+**Google AI Studio (Gemini 2.0 Flash)** as primary recommendation:
 - 1 million token support
 - Free (as of January 2026)
 - Can send entire project files
