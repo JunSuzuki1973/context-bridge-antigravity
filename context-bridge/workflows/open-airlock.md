@@ -2,7 +2,7 @@
 description: Context Bridgeを起動してWeb AIと連携する
 ---
 
-# Context Bridge (Manual Bridge Mode)
+# Context Bridge
 
 外部Web AI（Google AI Studio, ChatGPT等）を使用してコーディングするための「Human Relay」GUIツールを起動します。
 

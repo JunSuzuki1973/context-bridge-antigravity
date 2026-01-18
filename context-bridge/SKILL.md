@@ -1,9 +1,9 @@
 ---
-name: Manual Bridge Mode
+name: Context Bridge
 description: 外部Web AI（Gemini/ChatGPT）を使用してコーディングを行うための「Human Relay」ツール。API消費ゼロで大規模コンテキストを扱える。
 ---
 
-# Manual Bridge Mode
+# Context Bridge
 
 外部のWebチャットボット（Google AI Studio, ChatGPT等）を推論エンジンとして使用するための「Human Relay（人間中継）」機能です。
 

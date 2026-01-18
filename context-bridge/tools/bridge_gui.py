@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Manual Bridge Mode - Human Relay GUI Tool
+Context Bridge - Human Relay GUI Tool
 外部Web AI（Gemini/ChatGPT）を使用してコーディングを行うための「Human Relay」ツール。
 API消費ゼロで大規模コンテキストを扱える。
 
@@ -24,7 +24,7 @@ from tkinter import ttk, messagebox, scrolledtext
 
 # Default excluded directories (always ignored)
 DEFAULT_EXCLUDED_DIRS = {
-    '.git', '__pycache__', 'node_modules', '.venv', 'venv', 'env',
+    '.git', '.agent', '__pycache__', 'node_modules', '.venv', 'venv', 'env',
     '.idea', '.vscode', '.vs', 'dist', 'build', '.next', '.nuxt',
     'coverage', '.pytest_cache', '.mypy_cache', '.tox', 'eggs',
     '*.egg-info', '.eggs', 'bower_components', 'jspm_packages',
@@ -704,7 +704,7 @@ def main():
         print(f"Error: Directory does not exist: {cwd}")
         sys.exit(1)
     
-    print(f"Manual Bridge Mode")
+    print(f"Context Bridge")
     print(f"Project: {cwd}")
     print("Starting GUI...")
     

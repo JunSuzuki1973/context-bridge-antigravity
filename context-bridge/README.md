@@ -36,7 +36,7 @@ External Web AI (Google AI Studio, ChatGPT, etc.) as an inference engine without
 Simply instruct Antigravity in chat, and it will install automatically:
 
 ```
-Please install this skill (Manual Bridge Mode) to the appropriate location.
+Please install this skill (Context Bridge) to the appropriate location.
 ```
 
 Or:
